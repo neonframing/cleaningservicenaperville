@@ -1,0 +1,10 @@
+# Robots.txt for Evora Cleaners - Commercial Cleaning Naperville
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.evoracleaners.com/sitemap.xml
+
+# Crawl-delay (optional, be nice to servers)
+Crawl-delay: 1
