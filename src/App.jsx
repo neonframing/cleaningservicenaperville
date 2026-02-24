@@ -16,6 +16,10 @@ import guyCleaning from './assets/commercial-cleaning/guy-cleaning.webp'
 import guyCleaningFallback from './assets/commercial-cleaning/guy-cleaning.jpg'
 import womanMopping from './assets/commercial-cleaning/woman-mopping.webp'
 import womanMoppingFallback from './assets/commercial-cleaning/woman-mopping.jpg'
+import cleanDental from './assets/commercial-cleaning/clean-dental.jpg'
+import shieldIcon from './assets/commercial-cleaning/shield.svg'
+import clockIcon from './assets/commercial-cleaning/clock.svg'
+import ecoIcon from './assets/commercial-cleaning/eco.svg'
 
 function App() {
   return (
@@ -50,15 +54,53 @@ function App() {
             You run the business. We'll keep it spotless. Professional, bonded & insured 
             commercial cleaning for dental offices, medical practices, gyms, salons, law firms, and more.
           </p>
-          <div className="hero-cta">
-            <a href="#contact" className="btn btn-primary">Get Your Free Estimate</a>
-            <a href="tel:630-335-7721" className="btn btn-secondary">
-              <svg className="phone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-              </svg>
-              630-335-7721
-            </a>
-          </div>
+          <form className="hero-form contact-form">
+            <h3>Request Your Free Quote</h3>
+            <div className="form-row">
+              <div className="form-group">
+                <input type="text" placeholder="First Name *" required />
+              </div>
+              <div className="form-group">
+                <input type="text" placeholder="Last Name *" required />
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="form-group">
+                <input type="tel" placeholder="Phone Number *" required />
+              </div>
+              <div className="form-group">
+                <input type="email" placeholder="Email Address *" required />
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="form-group">
+                <input type="text" placeholder="Business Name" />
+              </div>
+              <div className="form-group">
+                <select defaultValue="">
+                  <option value="" disabled>Type of Business</option>
+                  <option value="dental">Dental Office</option>
+                  <option value="medical">Doctor / Medical Office</option>
+                  <option value="gym">Gym / Fitness Center</option>
+                  <option value="law">Law Firm</option>
+                  <option value="accounting">Accountant / CPA Office</option>
+                  <option value="insurance">Insurance Office</option>
+                  <option value="realestate">Real Estate Office</option>
+                  <option value="salon">Salon / Barbershop / Spa</option>
+                  <option value="medspa">Med Spa / Botox Clinic</option>
+                  <option value="apartment">Apartment Building</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div className="form-group">
+              <textarea placeholder="Tell us about your cleaning needs..." rows="3"></textarea>
+            </div>
+            <button type="submit" className="btn btn-primary btn-full">
+              Get My Free Estimate
+            </button>
+            <p className="form-note">We'll respond within 24 hours with a customized quote.</p>
+          </form>
           <div className="hero-trust">
             <div className="trust-item">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
@@ -83,8 +125,7 @@ function App() {
             <span className="section-tag">Our Services</span>
             <h2 className="section-title">Commercial Cleaning Solutions for Every Business</h2>
             <p className="section-description">
-              From dental offices to fitness centers, we deliver tailored cleaning solutions 
-              that keep your space pristine and your business thriving.
+              Reliable, detail-driven cleaning services designed to keep your workspace spotless, healthy, and ready for success every day.
             </p>
           </div>
 
@@ -117,8 +158,7 @@ function App() {
               <div className="featured-badge">Most Popular</div>
               <div className="service-image-wrapper">
                 <picture>
-                  <source srcSet={laptopGuy} type="image/webp" />
-                  <img src={laptopGuyFallback} alt="Medical and dental office cleaning" />
+                  <img src={cleanDental} alt="Medical and dental office cleaning" />
                 </picture>
               </div>
               <div className="service-content">
@@ -140,8 +180,8 @@ function App() {
             <div className="service-card">
               <div className="service-image-wrapper">
                 <picture>
-                  <source srcSet={guyCleaning} type="image/webp" />
-                  <img src={guyCleaningFallback} alt="Professional office cleaning services" />
+                  <source srcSet={laptopGuy} type="image/webp" />
+                  <img src={laptopGuyFallback} alt="Professional office cleaning services" />
                 </picture>
               </div>
               <div className="service-content">
@@ -158,34 +198,28 @@ function App() {
                 </ul>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ========== INTEREST: IMAGE GALLERY SECTION ========== */}
-      <section className="gallery">
-        <div className="container">
-          <div className="gallery-grid">
-            <div className="gallery-item large">
-              <picture>
-                <source srcSet={barbershop} type="image/webp" />
-                <img src={barbershopFallback} alt="Barbershop cleaning services" />
-              </picture>
-              <span className="gallery-label">Salons & Barbershops</span>
-            </div>
-            <div className="gallery-item">
-              <picture>
-                <source srcSet={laptopGuy} type="image/webp" />
-                <img src={laptopGuyFallback} alt="Professional office cleaning" />
-              </picture>
-              <span className="gallery-label">Professional Offices</span>
-            </div>
-            <div className="gallery-item">
-              <picture>
-                <source srcSet={womanMopping} type="image/webp" />
-                <img src={womanMoppingFallback} alt="Professional floor mopping service" />
-              </picture>
-              <span className="gallery-label">Floor Care Experts</span>
+            {/* Salons & Barbershops */}
+            <div className="service-card">
+              <div className="service-image-wrapper">
+                <picture>
+                  <source srcSet={barbershop} type="image/webp" />
+                  <img src={barbershopFallback} alt="Salon and barbershop cleaning services" />
+                </picture>
+              </div>
+              <div className="service-content">
+                <h3 className="service-title">Salons & Barbershops</h3>
+                <p className="service-description">
+                  Create a fresh, inviting atmosphere for your clients with 
+                  professional salon cleaning services.
+                </p>
+                <ul className="service-list">
+                  <li>Styling stations & mirrors</li>
+                  <li>Shampoo bowls & spa areas</li>
+                  <li>Floor care & hair removal</li>
+                  <li>Restrooms & waiting areas</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -195,8 +229,10 @@ function App() {
       <section className="what-we-clean">
         <div className="container">
           <div className="section-header">
-            <span className="section-tag">Comprehensive Coverage</span>
             <h2 className="section-title">What We Clean in Your Commercial Space</h2>
+            <p className="section-description">
+              Our commercial cleaning services cover the essential spaces that keep your business looking professional and running smoothly.
+            </p>
           </div>
           <div className="checklist-grid">
             <div className="checklist-column">
@@ -226,83 +262,70 @@ function App() {
 
       {/* ========== DESIRE: WHY CHOOSE US ========== */}
       <section id="why-us" className="why-us">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-tag">Why Evora Cleaners</span>
-            <h2 className="section-title">The Trusted Choice for Naperville Businesses</h2>
-            <p className="section-description">
-              We understand that your facility reflects your brand. Our team is trained to uphold 
-              the highest standards of cleanliness, confidentiality, and professionalism.
-            </p>
+        <h2 className="why-us__title">The Trusted Choice for Naperville Businesses</h2>
+        <p className="why-us__description">
+          We understand that your facility reflects your brand. Our team is trained to uphold 
+          the highest standards of cleanliness, confidentiality, and professionalism.
+        </p>
+
+        <div className="why-us__grid">
+          <div className="icon-card">
+            <div className="icon-card__icon-wrapper">
+              <img src={shieldIcon} alt="Bonded & Insured" className="icon-card__icon" />
+            </div>
+            <h3 className="icon-card__title">Bonded & Insured</h3>
+            <p className="icon-card__description">Full peace of mind with comprehensive insurance coverage and bonded staff for your protection.</p>
           </div>
 
-          <div className="features-grid">
-            <div className="feature-card">
-              <div className="feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                </svg>
-              </div>
-              <h3>Bonded & Insured</h3>
-              <p>Full peace of mind with comprehensive insurance coverage and bonded staff for your protection.</p>
+          <div className="icon-card">
+            <div className="icon-card__icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="8.5" cy="7" r="4"></circle>
+                <polyline points="17 11 19 13 23 9"></polyline>
+              </svg>
             </div>
+            <h3 className="icon-card__title">Vetted Professionals</h3>
+            <p className="icon-card__description">Every cleaner undergoes thorough background checks and in-person interviews before joining our team.</p>
+          </div>
 
-            <div className="feature-card">
-              <div className="feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="8.5" cy="7" r="4"></circle>
-                  <polyline points="17 11 19 13 23 9"></polyline>
-                </svg>
-              </div>
-              <h3>Vetted Professionals</h3>
-              <p>Every cleaner undergoes thorough background checks and in-person interviews before joining our team.</p>
+          <div className="icon-card">
+            <div className="icon-card__icon-wrapper">
+              <img src={clockIcon} alt="Flexible Scheduling" className="icon-card__icon" />
             </div>
+            <h3 className="icon-card__title">Flexible Scheduling</h3>
+            <p className="icon-card__description">Early morning, late night, or weekend cleaning—we work around your business hours with zero disruption.</p>
+          </div>
 
-            <div className="feature-card">
-              <div className="feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
-              </div>
-              <h3>Flexible Scheduling</h3>
-              <p>Early morning, late night, or weekend cleaning—we work around your business hours with zero disruption.</p>
+          <div className="icon-card">
+            <div className="icon-card__icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                <path d="M2 17l10 5 10-5"></path>
+                <path d="M2 12l10 5 10-5"></path>
+              </svg>
             </div>
+            <h3 className="icon-card__title">Professional Training</h3>
+            <p className="icon-card__description">Our team is trained in commercial cleaning best practices to protect your assets and maintain excellence.</p>
+          </div>
 
-            <div className="feature-card">
-              <div className="feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                  <path d="M2 17l10 5 10-5"></path>
-                  <path d="M2 12l10 5 10-5"></path>
-                </svg>
-              </div>
-              <h3>Professional Training</h3>
-              <p>Our team is trained in commercial cleaning best practices to protect your assets and maintain excellence.</p>
+          <div className="icon-card">
+            <div className="icon-card__icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
             </div>
+            <h3 className="icon-card__title">Local & Reliable</h3>
+            <p className="icon-card__description">Proudly serving Naperville and surrounding areas with consistent, dependable service you can count on.</p>
+          </div>
 
-            <div className="feature-card">
-              <div className="feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-              </div>
-              <h3>Local & Reliable</h3>
-              <p>Proudly serving Naperville and surrounding areas with consistent, dependable service you can count on.</p>
+          <div className="icon-card">
+            <div className="icon-card__icon-wrapper">
+              <img src={ecoIcon} alt="Eco-Friendly Options" className="icon-card__icon" />
             </div>
-
-            <div className="feature-card">
-              <div className="feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
-                  <path d="M8 12l2 2 4-4"></path>
-                </svg>
-              </div>
-              <h3>Eco-Friendly Options</h3>
-              <p>Green cleaning products available upon request for environmentally conscious businesses.</p>
-            </div>
+            <h3 className="icon-card__title">Eco-Friendly Options</h3>
+            <p className="icon-card__description">Green cleaning products available upon request for environmentally conscious businesses.</p>
           </div>
         </div>
       </section>
@@ -348,14 +371,19 @@ function App() {
                 <h3>Request Your Free Quote</h3>
                 <div className="form-row">
                   <div className="form-group">
-                    <input type="text" placeholder="Your Name *" required />
+                    <input type="text" placeholder="First Name *" required />
                   </div>
+                  <div className="form-group">
+                    <input type="text" placeholder="Last Name *" required />
+                  </div>
+                </div>
+                <div className="form-row">
                   <div className="form-group">
                     <input type="tel" placeholder="Phone Number *" required />
                   </div>
-                </div>
-                <div className="form-group">
-                  <input type="email" placeholder="Email Address *" required />
+                  <div className="form-group">
+                    <input type="email" placeholder="Email Address *" required />
+                  </div>
                 </div>
                 <div className="form-row">
                   <div className="form-group">
