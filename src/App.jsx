@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './App.css'
 
 // Import logo
@@ -22,6 +23,58 @@ import clockIcon from './assets/commercial-cleaning/clock.svg'
 import ecoIcon from './assets/commercial-cleaning/eco.svg'
 
 function App() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    phone: '',
+    email: '',
+    businessName: '',
+    businessType: '',
+    message: ''
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null)
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+
+    try {
+      await fetch('https://hooks.zapier.com/hooks/catch/23728461/u04vtmg/', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          submissionDate: new Date().toISOString()
+        })
+      })
+      
+      setSubmitStatus('success')
+      setFormData({
+        firstName: '',
+        lastName: '',
+        phone: '',
+        email: '',
+        businessName: '',
+        businessType: '',
+        message: ''
+      })
+    } catch (error) {
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <div className="commercial-cleaning-page">
       {/* ========== HEADER / NAVIGATION ========== */}
@@ -54,30 +107,36 @@ function App() {
             You run the business. We'll keep it spotless. Professional, bonded & insured 
             commercial cleaning for dental offices, medical practices, gyms, salons, law firms, and more.
           </p>
-          <form className="hero-form contact-form">
+          <form className="hero-form contact-form" onSubmit={handleSubmit}>
             <h3>Request Your Free Quote</h3>
+            {submitStatus === 'success' && (
+              <div className="form-success">Thank you! We'll be in touch within 24 hours.</div>
+            )}
+            {submitStatus === 'error' && (
+              <div className="form-error">Something went wrong. Please try again or call us.</div>
+            )}
             <div className="form-row">
               <div className="form-group">
-                <input type="text" placeholder="First Name *" required />
+                <input type="text" name="firstName" placeholder="First Name *" required value={formData.firstName} onChange={handleInputChange} />
               </div>
               <div className="form-group">
-                <input type="text" placeholder="Last Name *" required />
+                <input type="text" name="lastName" placeholder="Last Name *" required value={formData.lastName} onChange={handleInputChange} />
               </div>
             </div>
             <div className="form-row">
               <div className="form-group">
-                <input type="tel" placeholder="Phone Number *" required />
+                <input type="tel" name="phone" placeholder="Phone Number *" required value={formData.phone} onChange={handleInputChange} />
               </div>
               <div className="form-group">
-                <input type="email" placeholder="Email Address *" required />
+                <input type="email" name="email" placeholder="Email Address *" required value={formData.email} onChange={handleInputChange} />
               </div>
             </div>
             <div className="form-row">
               <div className="form-group">
-                <input type="text" placeholder="Business Name" />
+                <input type="text" name="businessName" placeholder="Business Name" value={formData.businessName} onChange={handleInputChange} />
               </div>
               <div className="form-group">
-                <select defaultValue="">
+                <select name="businessType" value={formData.businessType} onChange={handleInputChange}>
                   <option value="" disabled>Type of Business</option>
                   <option value="dental">Dental Office</option>
                   <option value="medical">Doctor / Medical Office</option>
@@ -94,10 +153,10 @@ function App() {
               </div>
             </div>
             <div className="form-group">
-              <textarea placeholder="Tell us about your cleaning needs..." rows="3"></textarea>
+              <textarea name="message" placeholder="Tell us about your cleaning needs..." rows="3" value={formData.message} onChange={handleInputChange}></textarea>
             </div>
-            <button type="submit" className="btn btn-primary btn-full">
-              Get My Free Estimate
+            <button type="submit" className="btn btn-primary btn-full" disabled={isSubmitting}>
+              {isSubmitting ? 'Sending...' : 'Get My Free Estimate'}
             </button>
             <p className="form-note">We'll respond within 24 hours with a customized quote.</p>
           </form>
@@ -367,30 +426,36 @@ function App() {
             </div>
 
             <div className="contact-form-wrapper">
-              <form className="contact-form">
+              <form className="contact-form" onSubmit={handleSubmit}>
                 <h3>Request Your Free Quote</h3>
+                {submitStatus === 'success' && (
+                  <div className="form-success">Thank you! We'll be in touch within 24 hours.</div>
+                )}
+                {submitStatus === 'error' && (
+                  <div className="form-error">Something went wrong. Please try again or call us.</div>
+                )}
                 <div className="form-row">
                   <div className="form-group">
-                    <input type="text" placeholder="First Name *" required />
+                    <input type="text" name="firstName" placeholder="First Name *" required value={formData.firstName} onChange={handleInputChange} />
                   </div>
                   <div className="form-group">
-                    <input type="text" placeholder="Last Name *" required />
+                    <input type="text" name="lastName" placeholder="Last Name *" required value={formData.lastName} onChange={handleInputChange} />
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-group">
-                    <input type="tel" placeholder="Phone Number *" required />
+                    <input type="tel" name="phone" placeholder="Phone Number *" required value={formData.phone} onChange={handleInputChange} />
                   </div>
                   <div className="form-group">
-                    <input type="email" placeholder="Email Address *" required />
+                    <input type="email" name="email" placeholder="Email Address *" required value={formData.email} onChange={handleInputChange} />
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-group">
-                    <input type="text" placeholder="Business Name" />
+                    <input type="text" name="businessName" placeholder="Business Name" value={formData.businessName} onChange={handleInputChange} />
                   </div>
                   <div className="form-group">
-                    <select defaultValue="">
+                    <select name="businessType" value={formData.businessType} onChange={handleInputChange}>
                       <option value="" disabled>Type of Business</option>
                       <option value="dental">Dental Office</option>
                       <option value="medical">Doctor / Medical Office</option>
@@ -407,10 +472,10 @@ function App() {
                   </div>
                 </div>
                 <div className="form-group">
-                  <textarea placeholder="Tell us about your cleaning needs..." rows="3"></textarea>
+                  <textarea name="message" placeholder="Tell us about your cleaning needs..." rows="3" value={formData.message} onChange={handleInputChange}></textarea>
                 </div>
-                <button type="submit" className="btn btn-primary btn-full">
-                  Get My Free Estimate
+                <button type="submit" className="btn btn-primary btn-full" disabled={isSubmitting}>
+                  {isSubmitting ? 'Sending...' : 'Get My Free Estimate'}
                 </button>
                 <p className="form-note">
                   We'll respond within 24 hours with a customized quote.
