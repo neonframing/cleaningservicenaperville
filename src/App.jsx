@@ -518,6 +518,14 @@ function App() {
 
           <div className="footer-bottom">
             <p>© 2026 Evora Cleaners. All rights reserved.</p>
+            <a
+              href="https://www.evoracleaners.com/our-policies"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-policy-link"
+            >
+              View Our Policies
+            </a>
           </div>
         </div>
       </footer>
